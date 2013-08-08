@@ -68,7 +68,7 @@ set foldlevel=1         "this is just what i use
 
 "tell the term has 256 colors
 set t_Co=256
-set guifont=Menlo\ for\ Powerline:h17
+set guifont=Anonymous\ Pro:h16
 
 
 syntax enable
