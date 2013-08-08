@@ -35,7 +35,7 @@ set showmode                    "show current mode down the bottom
 
 set number                      "add line numbers
 set showbreak=
-set wrap linebreak nolist
+""set wrap linebreak nolist
 
 "add some line space for easy reading
 set linespace=4
