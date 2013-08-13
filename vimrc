@@ -1,16 +1,35 @@
 "necessary on some Linux distros for pathogen to properly load bundles
+set nocompatible                " choose no compatibility with legacy vi
 filetype on
-filetype off
 
 " load pathogen managed plugins
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-set nocompatible                " choose no compatibility with legacy vi
-syntax enable
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-fugitive'
+Bundle 'bling/vim-airline'
+Bundle 'kien/ctrlp.vim'
+Bundle 'hallettj/jslint.vim'
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+Bundle 'rking/ag.vim'
+Bundle 'Shougo/neocomplcache'
+Bundle 'mattn/emmet-vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'elzr/vim-json'
+
 set encoding=utf-8
 set showcmd                     " display incomplete commands
-filetype plugin indent on       " load file type plugins + indentation
+filetype plugin indent on         " load file type plugins + indentation
 
 "" Whitespace
 set nowrap                      " don't wrap lines
@@ -34,8 +53,7 @@ set history=1000                "store lots of :cmdline history
 set showmode                    "show current mode down the bottom
 
 set number                      "add line numbers
-set showbreak=
-""set wrap linebreak nolist
+set showbreak=                  "set wrap linebreak nolist
 
 "add some line space for easy reading
 set linespace=4
@@ -70,39 +88,19 @@ set foldlevel=1         "this is just what i use
 set t_Co=256
 set guifont=Anonymous\ Pro:h16
 
+autocmd BufNewFile,BufRead *.jade set filetype=jade
+autocmd BufNewFile,BufRead *.styl set filetype=styl
+autocmd BufNewFile,BufRead *.json set filetype=json
+autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 
-syntax enable
-" set background=dark
-" colorscheme molokai
+syntax on
 set background=dark
 colorscheme molokai
 
+
 set guitablabel=%M%t
 
-" Libs
-
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-fugitive'
-Bundle 'bling/vim-airline'
-Bundle 'kien/ctrlp.vim'
-Bundle 'hallettj/jslint.vim'
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-Bundle 'rking/ag.vim'
-Bundle 'Shougo/neocomplcache'
-Bundle 'mattn/emmet-vim'
-Bundle 'scrooloose/syntastic'
-
-
-
 "map to CommandT TextMate style finder
-
 let g:ctrlp_map = '<c-t>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
@@ -135,7 +133,7 @@ nmap <C-s> :w<CR>
 "key mapping for tab navigation
 nmap <Tab> gt
 nmap <S-Tab> gT
-
+nmap ( ()<left>
 "snipmate setup
 source ~/.vim/snippets/support_functions.vim
 autocmd vimenter * call s:SetupSnippets()
