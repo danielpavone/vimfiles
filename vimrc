@@ -26,6 +26,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'elzr/vim-json'
+Bundle 'Lokaltog/vim-powerline'
 
 set encoding=utf-8
 set showcmd                     " display incomplete commands
@@ -71,7 +72,6 @@ set statusline=%<%F%h%m%r%h%w%y\ %{&ff}\ %{strftime(\"%c\",getftime(expand(\"%:p
 
 set laststatus=2
 
-
 "turn off needless toolbar on gvim/mvim
 set guioptions-=T
 
@@ -86,7 +86,7 @@ set foldlevel=1         "this is just what i use
 
 "tell the term has 256 colors
 set t_Co=256
-set guifont=Anonymous\ Pro:h16
+set guifont=Liberation_Mono_for_Powerline:h14
 
 autocmd BufNewFile,BufRead *.jade set filetype=jade
 autocmd BufNewFile,BufRead *.styl set filetype=styl
