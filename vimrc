@@ -26,7 +26,6 @@ Bundle 'scrooloose/syntastic'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'elzr/vim-json'
-Bundle 'Lokaltog/vim-powerline'
 
 set encoding=utf-8
 set showcmd                     " display incomplete commands
@@ -86,7 +85,7 @@ set foldlevel=1         "this is just what i use
 
 "tell the term has 256 colors
 set t_Co=256
-set guifont=Liberation_Mono_for_Powerline:h14
+set guifont=Meslo\ LG\ L\ Regular\ for\ Powerline:h16
 
 autocmd BufNewFile,BufRead *.jade set filetype=jade
 autocmd BufNewFile,BufRead *.styl set filetype=styl
