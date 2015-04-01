@@ -94,7 +94,11 @@ autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 
 syntax on
 set background=dark
+<<<<<<< HEAD
 colorscheme base16-eighties
+=======
+colorscheme summerfruit256
+>>>>>>> Changed vim colorscheme to summerfruit
 
 
 set guitablabel=%M%t
