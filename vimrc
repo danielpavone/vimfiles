@@ -15,7 +15,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-fugitive'
 Bundle 'bling/vim-airline'
 Bundle 'kien/ctrlp.vim'
-Bundle 'hallettj/jslint.vim'
+Bundle "wookiehangover/jshint.vim"
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "garbas/vim-snipmate"
@@ -25,7 +25,12 @@ Bundle 'mattn/emmet-vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'digitaltoad/vim-jade'
+Bundle 'tpope/vim-surround.git'
 Bundle 'elzr/vim-json'
+
+"" Vundle Plugins
+Plugin 'rizzatti/dash.vim'
+Plugin 'mustache/vim-mustache-handlebars'
 
 set encoding=utf-8
 set showcmd                     " display incomplete commands
@@ -76,6 +81,9 @@ set guioptions-=T
 
 " use comma as <Leader> key instead of backslash
 let mapleader=","
+"
+" activate mustache abbreviations
+let g:mustache_abbreviations = 1
 
 "folding settings
 set foldmethod=indent   "fold based on indent
@@ -85,7 +93,7 @@ set foldlevel=1         "this is just what i use
 
 "tell the term has 256 colors
 set t_Co=256
-set guifont=Meslo\ LG\ L\ Regular\ for\ Powerline:h16
+set guifont=Meslo\ LG\ L\ Regular\ for\ Powerline:h18
 
 autocmd BufNewFile,BufRead *.jade set filetype=jade
 autocmd BufNewFile,BufRead *.styl set filetype=styl
@@ -137,9 +145,16 @@ nmap <C-s> :w<CR>
 nmap <Tab> gt
 nmap <S-Tab> gT
 nmap ( ()<left>
+
+"key mapping for clean search
+nmap <silent> <leader>/ :nohlsearch<CR>
 "snipmate setup
 source ~/.vim/snippets/support_functions.vim
 autocmd vimenter * call s:SetupSnippets()
+
+if has("autocmd")
+  autocmd BufWritePost .vimrc source $MYVIMRC
+endif
 
 function! s:SetupSnippets()
   try
