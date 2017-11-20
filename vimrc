@@ -15,7 +15,6 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-fugitive'
 Bundle 'bling/vim-airline'
 Bundle 'kien/ctrlp.vim'
-Bundle "wookiehangover/jshint.vim"
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "garbas/vim-snipmate"
@@ -27,10 +26,14 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'tpope/vim-surround.git'
 Bundle 'elzr/vim-json'
+Bundle 'chemzqm/vim-jsx-improve'
 
 "" Vundle Plugins
 Plugin 'rizzatti/dash.vim'
 Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'isRuslan/vim-es6'
+Plugin 'jshint/jshint'
+
 
 set encoding=utf-8
 set showcmd                     " display incomplete commands
@@ -94,6 +97,17 @@ set foldlevel=1         "this is just what i use
 "tell the term has 256 colors
 set t_Co=256
 set guifont=Meslo\ LG\ L\ Regular\ for\ Powerline:h18
+let g:Powerline_symbols = 'fancy'
+set fillchars+=stl:\ ,stlnc:\
+set term=xterm-256color
+set termencoding=utf-8
+
+if has("gui_running")
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+    set guifont=Meslo\ LG\ L\ Regular\ for\ Powerline:h18
+  endif
+endif
 
 autocmd BufNewFile,BufRead *.jade set filetype=jade
 autocmd BufNewFile,BufRead *.styl set filetype=styl
@@ -102,7 +116,7 @@ autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 
 syntax on
 set background=dark
-colorscheme summerfruit256
+colorscheme molokai
 
 set guitablabel=%M%t
 
@@ -176,5 +190,5 @@ let g:neocomplcache_enable_at_startup = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 let g:airline_powerline_fonts = 1
-
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:syntastic_ruby_exec = '~/.rbenv/shims/ruby'
