@@ -41,7 +41,7 @@ filetype plugin indent on         " load file type plugins + indentation
 
 "" Whitespace
 set nowrap                      " don't wrap lines
-set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
+set tabstop=4 shiftwidth=4      " a tab is two spaces (or set this to 4)
 set expandtab                   " use spaces, not tabs (optional)
 set backspace=indent,eol,start  " backspace through everything in insert mode
 
@@ -96,7 +96,7 @@ set foldlevel=1         "this is just what i use
 
 "tell the term has 256 colors
 set t_Co=256
-set guifont=Meslo\ LG\ L\ Regular\ for\ Powerline:h18
+set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h18
 let g:Powerline_symbols = 'fancy'
 set fillchars+=stl:\ ,stlnc:\
 set term=xterm-256color
@@ -105,7 +105,7 @@ set termencoding=utf-8
 if has("gui_running")
   let s:uname = system("uname")
   if s:uname == "Darwin\n"
-    set guifont=Meslo\ LG\ L\ Regular\ for\ Powerline:h18
+    set guifont=M+\ 1m\ for\ Powerline:h18
   endif
 endif
 
