@@ -12,9 +12,9 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'bling/vim-airline'
 Plug 'kien/ctrlp.vim'
-Plug "MarcWeber/vim-addon-mw-utils"
-Plug "tomtom/tlib_vim"
-Plug "garbas/vim-snipmate"
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
 Plug 'rking/ag.vim'
 Plug 'Shougo/neocomplcache'
 Plug 'mattn/emmet-vim'
