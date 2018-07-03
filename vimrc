@@ -6,7 +6,6 @@ call plug#begin('~/.vim/plugged')
 
 " Plugins go here
 Plug 'gmarik/vundle'
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
