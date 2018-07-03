@@ -2,38 +2,57 @@
 set nocompatible                " choose no compatibility with legacy vi
 filetype on
 
-" load pathogen managed plugins
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-fugitive'
-Bundle 'bling/vim-airline'
-Bundle 'kien/ctrlp.vim'
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-Bundle 'rking/ag.vim'
-Bundle 'Shougo/neocomplcache'
-Bundle 'mattn/emmet-vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'tpope/vim-surround.git'
-Bundle 'elzr/vim-json'
-Bundle 'chemzqm/vim-jsx-improve'
+" Plugins go here
+Plug 'gmarik/vundle'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
+Plug 'bling/vim-airline'
+Plug 'kien/ctrlp.vim'
+Plug "MarcWeber/vim-addon-mw-utils"
+Plug "tomtom/tlib_vim"
+Plug "garbas/vim-snipmate"
+Plug 'rking/ag.vim'
+Plug 'Shougo/neocomplcache'
+Plug 'mattn/emmet-vim'
+Plug 'kchmck/vim-coffee-script'
+Plug 'digitaltoad/vim-jade'
+Plug 'tpope/vim-surround'
+Plug 'elzr/vim-json'
+Plug 'chemzqm/vim-jsx-improve'
+Plug 'rizzatti/dash.vim'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'isRuslan/vim-es6'
+Plug 'jshint/jshint'
 
-"" Vundle Plugins
-Plugin 'rizzatti/dash.vim'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'isRuslan/vim-es6'
-Plugin 'jshint/jshint'
+function! BuildYCM(info)
+  if a:info.status == 'installed' || a:info.force
+    !./install.sh
+  endif
+endfunction
 
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+
+function! BuildTern(info)
+  if a:info.status == 'installed' || a:info.force
+    !npm install
+  endif
+endfunction
+
+Plug 'marijnh/tern_for_vim', { 'do': function('BuildTern') }
+
+function! Installjshint(info)
+  if a:info.status == 'installed' || a:info.force
+    !npm install -g jshint
+  endif
+endfunction
+
+Plug 'scrooloose/syntastic', { 'do': function('Installjshint') }
+
+call plug#end()
 
 set encoding=utf-8
 set showcmd                     " display incomplete commands
