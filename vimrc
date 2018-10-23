@@ -25,7 +25,10 @@ Plug 'chemzqm/vim-jsx-improve'
 Plug 'rizzatti/dash.vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'isRuslan/vim-es6'
-Plug 'jshint/jshint'
+Plug 'jiangmiao/auto-pairs'
+Plug 'w0rp/ale'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
 
 function! BuildYCM(info)
   if a:info.status == 'installed' || a:info.force
@@ -59,7 +62,7 @@ filetype plugin indent on         " load file type plugins + indentation
 
 "" Whitespace
 set nowrap                      " don't wrap lines
-set tabstop=4 shiftwidth=4      " a tab is two spaces (or set this to 4)
+set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
 set expandtab                   " use spaces, not tabs (optional)
 set backspace=indent,eol,start  " backspace through everything in insert mode
 
@@ -142,6 +145,9 @@ set guitablabel=%M%t
 let g:ctrlp_map = '<c-t>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
 
 nnoremap <leader>t :CtrlP<CR>
@@ -164,6 +170,14 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
+"key mapping for yank lines to clipboard
+if has("clipboard")
+  set clipboard=unnamed " copy to the system clipboard
+
+  if has("unnamedplus") " X11 support
+    set clipboard+=unnamedplus
+  endif
+endif
 
 "key mapping for saving file
 nmap <C-s> :w<CR>
