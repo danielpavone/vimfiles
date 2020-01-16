@@ -8,7 +8,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'gmarik/vundle'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-fugitive'
+Plug 'slashmili/alchemist.vim'
+Plug 'tpope/vim-fugitive', { 'on': [] }
 Plug 'bling/vim-airline'
 Plug 'kien/ctrlp.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -27,8 +28,10 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'isRuslan/vim-es6'
 Plug 'jiangmiao/auto-pairs'
 Plug 'w0rp/ale'
+Plug 'burner/vim-svelte'
+Plug 'leafgarland/typescript-vim'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-
+Plug 'dkarter/bullets.vim'
 
 function! BuildYCM(info)
   if a:info.status == 'installed' || a:info.force
@@ -50,6 +53,17 @@ function! Installjshint(info)
   if a:info.status == 'installed' || a:info.force
     !npm install -g jshint
   endif
+endfunction
+
+command! Gstatus call LazyLoadFugitive('Gstatus')
+command! Gdiff call LazyLoadFugitive('Gdiff')
+command! Glog call LazyLoadFugitive('Glog')
+command! Gblame call LazyLoadFugitive('Gblame')
+
+function! LazyLoadFugitive(cmd)
+  call plug#load('vim-fugitive')
+  call fugitive#detect(expand('%:p'))
+  exe a:cmd
 endfunction
 
 Plug 'scrooloose/syntastic', { 'do': function('Installjshint') }
@@ -221,6 +235,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:neocomplcache_enable_at_startup = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
+let g:neocomplete#force_overwrite_completefunc = 1
 let g:airline_powerline_fonts = 1
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 let g:syntastic_ruby_exec = '~/.rbenv/shims/ruby'
