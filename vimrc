@@ -5,33 +5,32 @@ filetype on
 call plug#begin('~/.vim/plugged')
 
 " Plugins go here
-Plug 'gmarik/vundle'
-Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'slashmili/alchemist.vim'
 Plug 'tpope/vim-fugitive', { 'on': [] }
 Plug 'bling/vim-airline'
 Plug 'kien/ctrlp.vim'
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
 Plug 'rking/ag.vim'
-Plug 'Shougo/neocomplcache'
 Plug 'mattn/emmet-vim'
 Plug 'kchmck/vim-coffee-script'
-Plug 'digitaltoad/vim-jade'
 Plug 'tpope/vim-surround'
 Plug 'elzr/vim-json'
 Plug 'chemzqm/vim-jsx-improve'
 Plug 'rizzatti/dash.vim'
-Plug 'mustache/vim-mustache-handlebars'
 Plug 'isRuslan/vim-es6'
+Plug 'preservim/nerdtree'
 Plug 'jiangmiao/auto-pairs'
 Plug 'w0rp/ale'
 Plug 'burner/vim-svelte'
 Plug 'leafgarland/typescript-vim'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'dkarter/bullets.vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+
+" Optional:
+Plug 'honza/vim-snippets'
 
 function! BuildYCM(info)
   if a:info.status == 'installed' || a:info.force
@@ -165,7 +164,7 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
 
 nnoremap <leader>t :CtrlP<CR>
-nnoremap <leader>b :!bundle<CR>
+nnoremap <leader>b :!plugged<CR>
 
 "mark syntax errors with :signs
 let g:syntastic_enable_signs=1
@@ -194,7 +193,7 @@ if has("clipboard")
 endif
 
 "key mapping for saving file
-nmap <C-s> :w<CR>
+"nmap <C-s> :w<CR>
 
 "key mapping for tab navigation
 nmap <Tab> gt
@@ -203,8 +202,7 @@ nmap ( ()<left>
 
 "key mapping for clean search
 nmap <silent> <leader>/ :nohlsearch<CR>
-"snipmate setup
-source ~/.vim/snippets/support_functions.vim
+
 autocmd vimenter * call s:SetupSnippets()
 
 if has("autocmd")
@@ -213,9 +211,8 @@ endif
 
 function! s:SetupSnippets()
   try
-    call ExtractSnips("~/.vim/bundle/snipmate/snippets/html", "eruby")
-    call ExtractSnips("~/.vim/bundle/snipmate/snippets/html", "xhtml")
-    call ExtractSnips("~/.vim/bundle/snipmate/snippets/html", "handlebars")
+    call ExtractSnips("~/.vim/plugged/vim-snippets/snippets/javascript", "javascript")
+    call ExtractSnips("~/.vim/snippets/javascript.snippet", "javascript")
   catch
   endtry
 endfunction
@@ -230,12 +227,11 @@ map <Leader>l :call RunLastSpec()<CR>
 
 autocmd FileType python set sts=4 sw=4
 
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath^=~/.vim/plugged/ctrlp.vim
 
-let g:neocomplcache_enable_at_startup = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-let g:neocomplete#force_overwrite_completefunc = 1
+imap <C-J> <esc>a<Plug>snipMateNextOrTrigger
+smap <C-J> <Plug>snipMateNextOrTrigger
 let g:airline_powerline_fonts = 1
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-let g:syntastic_ruby_exec = '~/.rbenv/shims/ruby'
