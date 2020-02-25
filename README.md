@@ -4,7 +4,7 @@ Vimfiles
 ## Install
 
 ``` bash
-$ git clone git@github.com:bchagas/vimfiles.git ~/.vim
+$ git clone git@github.com:danielpavone/vimfiles.git ~/.vim
 $ echo "source ~/.vim/vimrc" > ~/.vimrc
 $ cd ~/.vim
 $ git submodule update --init
